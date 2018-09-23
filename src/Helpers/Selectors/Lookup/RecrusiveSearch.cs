@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using TreeViewEx.Controls.Models;
 
-namespace TreeViewEx.Helpers.TreeLookup.Lookup
+namespace TreeViewEx.Helpers.Selectors.Lookup
 {
     public class RecrusiveSearch<TVm, T> : ITreeLookup<TVm, T>
     {
@@ -24,9 +24,9 @@ namespace TreeViewEx.Helpers.TreeLookup.Lookup
 
             if (subentries != null)
                 foreach (var current in subentries)
-                    if (current is ISupportTreeSelector<TVm, T> && current is ISupportEntriesHelper<TVm>)
+                    if (current is ISupportTreeSelector<TVm, T> selector)
                     {
-                        var currentSelectionHelper = (current as ISupportTreeSelector<TVm, T>).Selection;
+                        var currentSelectionHelper = selector.Selection;
                         var compareResult = comparer.CompareHierarchy(currentSelectionHelper.Value, value);
                         switch (compareResult)
                         {
@@ -38,7 +38,6 @@ namespace TreeViewEx.Helpers.TreeLookup.Lookup
                                 if (processors.Process(compareResult, parentSelector, currentSelectionHelper))
                                 {
                                     await Lookup(value, currentSelectionHelper, comparer, processors);
-
                                     return;
                                 }
 

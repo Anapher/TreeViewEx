@@ -36,10 +36,10 @@ namespace TreeViewEx.Controls.Models
         /// <returns></returns>
         object GetItem(object rootItem, string path);
 
-        ValueTask<object> GetItemAsync(object rootItem, string path);
+        Task<object> GetItemAsync(object rootItem, string path);
 
         IEnumerable List(object item);
-        ValueTask<IEnumerable> ListAsync(object item);
+        Task<IEnumerable> ListAsync(object item);
 
         string ExtractPath(string pathName);
 

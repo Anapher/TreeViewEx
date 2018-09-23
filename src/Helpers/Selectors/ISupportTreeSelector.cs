@@ -1,4 +1,4 @@
-﻿namespace TreeViewEx.Helpers.TreeLookup
+﻿namespace TreeViewEx.Helpers.Selectors
 {
     public interface ISupportTreeSelector<VM, T> : ISupportEntriesHelper<VM>
     {

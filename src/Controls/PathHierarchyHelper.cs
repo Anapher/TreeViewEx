@@ -88,7 +88,7 @@ namespace TreeViewEx.Controls
             return current;
         }
 
-        public async ValueTask<object> GetItemAsync(object rootItem, string path)
+        public async Task<object> GetItemAsync(object rootItem, string path)
         {
             var queue = new Queue<string>(path.Split(new[] {Separator}, StringSplitOptions.RemoveEmptyEntries));
             var current = rootItem;
@@ -119,7 +119,7 @@ namespace TreeViewEx.Controls
         public string ValuePath { get; set; }
         public string SubentriesPath { get; set; }
 
-        public ValueTask<IEnumerable> ListAsync(object item) => item is IEnumerable enumerable ? new ValueTask<IEnumerable>(enumerable) : GetAutoCompleteEntries(item);
+        public Task<IEnumerable> ListAsync(object item) => item is IEnumerable enumerable ? Task.FromResult(enumerable) : GetAutoCompleteEntries(item);
         public IEnumerable List(object item) => item is IEnumerable enumerable ?  enumerable : GetSubEntries(item);
 
         protected virtual object GetParent(object item) =>
@@ -131,13 +131,13 @@ namespace TreeViewEx.Controls
         protected virtual IEnumerable GetSubEntries(object item) =>
             PropertyPathHelper.GetValueFromPropertyInfo(item, SubentriesPath) as IEnumerable;
 
-        protected virtual ValueTask<IEnumerable> GetAutoCompleteEntries(object item) =>
+        protected virtual Task<IEnumerable> GetAutoCompleteEntries(object item) =>
             ((IAsyncAutoComplete) item).GetAutoCompleteEntries();
     }
 
     public interface IAsyncAutoComplete
     {
-        ValueTask<IEnumerable> GetAutoCompleteEntries();
+        Task<IEnumerable> GetAutoCompleteEntries();
     }
 
     /// <summary>

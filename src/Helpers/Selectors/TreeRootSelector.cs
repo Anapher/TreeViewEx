@@ -4,9 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using TreeViewEx.Controls.Models;
-using TreeViewEx.Helpers.TreeLookup;
-using TreeViewEx.Helpers.TreeLookup.Lookup;
-using TreeViewEx.Helpers.TreeLookup.Processors;
+using TreeViewEx.Helpers.Selectors.Lookup;
+using TreeViewEx.Helpers.Selectors.Processors;
 using TreeViewEx.Utilities;
 
 namespace TreeViewEx.Helpers.Selectors

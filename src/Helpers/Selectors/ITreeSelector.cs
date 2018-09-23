@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Threading.Tasks;
 
-namespace TreeViewEx.Helpers.TreeLookup
+namespace TreeViewEx.Helpers.Selectors
 {
     public interface ITreeSelector<TVm, T> : INotifyPropertyChanged
     {

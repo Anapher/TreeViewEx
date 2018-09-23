@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TreeViewEx.Controls.Models;
 
-namespace TreeViewEx.Helpers.TreeLookup.Lookup
+namespace TreeViewEx.Helpers.Selectors.Lookup
 {
     public class SearchNextUsingReverseLookup<TVm, T> : ITreeLookup<TVm, T>
     {

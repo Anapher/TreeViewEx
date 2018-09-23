@@ -5,8 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Nito.AsyncEx;
 using TreeViewEx.Controls.Models;
-using TreeViewEx.Helpers.TreeLookup;
-using TreeViewEx.Helpers.TreeLookup.Lookup;
+using TreeViewEx.Helpers.Selectors.Lookup;
 using TreeViewEx.Utilities;
 
 namespace TreeViewEx.Helpers.Selectors

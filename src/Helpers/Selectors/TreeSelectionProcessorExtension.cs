@@ -1,6 +1,6 @@
 ﻿using TreeViewEx.Controls.Models;
 
-namespace TreeViewEx.Helpers.TreeLookup
+namespace TreeViewEx.Helpers.Selectors
 {
     public static class TreeSelectionProcessorExtension
     {

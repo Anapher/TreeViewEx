@@ -37,13 +37,16 @@ namespace TreeViewEx.Helpers
         {
         }
 
+        public EntriesHelper() : this(Enumerable.Empty<TVm>())
+        {
+        }
+
         public EntriesHelper(IEnumerable<TVm> entries)
         {
             _isLoaded = true;
             All = new TransactionalObservableCollection<TVm>();
 
             ((TransactionalObservableCollection<TVm>) All).AddRange(entries);
-            AllNonBindable = All;
         }
 
         public event EventHandler EntriesChanged;
@@ -73,7 +76,7 @@ namespace TreeViewEx.Helpers
         public bool ClearBeforeLoad { get; set; } = false;
         public DateTimeOffset LastRefreshTimeUtc { get; private set; }
 
-        public IEnumerable<TVm> AllNonBindable { get; private set; } = new List<TVm>();
+        public IEnumerable<TVm> AllNonBindable => All;
         public ObservableCollection<TVm> All { get; }
         public AsyncLock LoadingLock { get; } = new AsyncLock();
 
@@ -83,7 +86,6 @@ namespace TreeViewEx.Helpers
 
             using (await LoadingLock.LockAsync())
             {
-                AllNonBindable = Enumerable.Empty<TVm>();
                 All.Clear();
                 _isLoaded = false;
             }
@@ -141,7 +143,7 @@ namespace TreeViewEx.Helpers
                 }
             }
 
-            return AllNonBindable;
+            return All;
         }
 
         public void UpdateEntries(IEnumerable<TVm> viewModels)
@@ -166,14 +168,12 @@ namespace TreeViewEx.Helpers
             {
                 all.NotifyChanges();
             }
-
-            AllNonBindable = all;
+            
             EntriesChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public void SetEntries(IEnumerable<TVm> viewModels)
         {
-            AllNonBindable = viewModels.ToList();
             var all = (TransactionalObservableCollection<TVm>) All;
 
             all.SuspendCollectionChangeNotification();

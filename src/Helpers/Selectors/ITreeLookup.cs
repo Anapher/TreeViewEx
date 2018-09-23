@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using TreeViewEx.Controls.Models;
 
-namespace TreeViewEx.Helpers.TreeLookup
+namespace TreeViewEx.Helpers.Selectors
 {
     public interface ITreeLookup<TVm, T>
     {

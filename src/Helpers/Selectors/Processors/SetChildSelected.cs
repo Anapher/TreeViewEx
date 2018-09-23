@@ -1,6 +1,6 @@
 ﻿using TreeViewEx.Controls.Models;
 
-namespace TreeViewEx.Helpers.TreeLookup.Processors
+namespace TreeViewEx.Helpers.Selectors.Processors
 {
     public class SetChildSelected<TVm, T> : ITreeLookupProcessor<TVm, T>
     {

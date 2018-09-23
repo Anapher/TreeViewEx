@@ -21,5 +21,45 @@ namespace TreeViewEx.Utilities
 
             return returnVal as T;
         }
+
+        public static T FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            while (true)
+            {
+                //get parent item
+                var parentObject = VisualTreeHelper.GetParent(child);
+
+                //we've reached the end of the tree
+                if (parentObject == null) return null;
+
+                //check if the parent matches the type we're looking for
+                if (parentObject is T parent) return parent;
+
+                child = parentObject;
+            }
+        }
+
+        public static T GetDescendantByType<T>(Visual element) where T : Visual
+        {
+            if (element == null)
+                return default;
+
+            if (element.GetType() == typeof(T))
+                return (T) element;
+
+            T foundElement = null;
+            (element as FrameworkElement)?.ApplyTemplate();
+
+            for (var i = 0; i < VisualTreeHelper.GetChildrenCount(element); i++)
+            {
+                var child = VisualTreeHelper.GetChild(element, i);
+                var visual = child as Visual;
+                foundElement = GetDescendantByType<T>(visual);
+                if (foundElement != null)
+                    break;
+            }
+
+            return foundElement;
+        }
     }
 }

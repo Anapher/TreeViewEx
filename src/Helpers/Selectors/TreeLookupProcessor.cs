@@ -1,6 +1,5 @@
 ﻿using System;
 using TreeViewEx.Controls.Models;
-using TreeViewEx.Helpers.TreeLookup;
 
 namespace TreeViewEx.Helpers.Selectors
 {
