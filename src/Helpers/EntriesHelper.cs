@@ -178,7 +178,7 @@ namespace TreeViewEx.Helpers
 
             all.SuspendCollectionChangeNotification();
             all.Clear();
-            all.AddRange(AllNonBindable);
+            all.AddRange(viewModels);
 
             EntriesChanged?.Invoke(this, EventArgs.Empty);
         }
