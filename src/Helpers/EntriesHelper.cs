@@ -176,7 +176,6 @@ namespace TreeViewEx.Helpers
         {
             var all = (TransactionalObservableCollection<TVm>) All;
 
-            all.SuspendCollectionChangeNotification();
             all.Clear();
             all.AddRange(viewModels);
 
