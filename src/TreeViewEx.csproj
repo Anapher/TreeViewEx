@@ -1,16 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <TargetFramework>net47</TargetFramework>
+    <Version>1.0.1</Version>
     <LangVersion>latest</LangVersion>
+    <UseWPF>true</UseWPF>
     <RootNamespace>TreeViewEx</RootNamespace>
     <AssemblyName>Anapher.TreeViewEx</AssemblyName>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
 
-  <ItemGroup>
-    <!-- Resources -->
-    <Resource Include="Resources\**\*.png" />
-  </ItemGroup>
+    <PackageProjectUrl>https://github.com/Anapher/TreeViewEx</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Anapher/TreeViewEx.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+
+    <Title>TreeViewEx</Title>
+    <Description>Provides useful model classes to manage a treeview, implement data virtualization and lazy loading</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright 2019 Vincent (Anapher)</Copyright>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Nito.AsyncEx" Version="4.0.1" />
